@@ -185,6 +185,8 @@
     prisma-engines
     go
     python3
+    dotnet-sdk
+    dotnet-runtime
     # programming tools
     vscode
     neovim
