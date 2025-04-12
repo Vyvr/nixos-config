@@ -29,6 +29,8 @@
   boot.kernelParams = [
     "quiet"
     "loglevel=3"
+    "acpi=strict"
+    "acpi_osi=linux"
   ];
 
   # Set your time zone.
@@ -174,6 +176,8 @@
     btop
     neofetch
     kalker
+    openssl
+    smartmontools
     # github cli & git
     gh
     git
@@ -192,30 +196,27 @@
     neovim
     jetbrains.rider
     docker
+    dbeaver-bin
+    insomnia
     # media
     google-chrome
     obsidian
     discord-ptb
     protontricks
     winetricks
-    wineWowPackages.stable  # Ensures Wine dependencies are available
-    gtk3  # Required for Protontricks GUI
+    wineWowPackages.stable # Ensures Wine dependencies are available
+    gtk3 # Required for Protontricks GUI
     # nix config formatter
     nixfmt-rfc-style
   ];
 
   # Add Prisma environment variables
-
-  environment.sessionVariables = {
-
-    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-
-    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
-
-    PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
-
-    PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
-
+  environment.sessionVariables = with pkgs; {
+    PRISMA_FORMAT_BINARY = "${prisma-engines}/bin/prisma-fmt";
+    PRISMA_QUERY_ENGINE_BINARY = "${prisma-engines}/bin/query-engine";
+    PRISMA_QUERY_ENGINE_LIBRARY = "${prisma-engines}/lib/libquery_engine.node";
+    PRISMA_SCHEMA_ENGINE_BINARY = "${prisma-engines}/bin/schema-engine";
+    PRISMA_INTROSPECTION_ENGINE_BINARY = "${prisma-engines}/bin/introspection-engine";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
