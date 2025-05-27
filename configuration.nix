@@ -178,6 +178,7 @@
     kalker
     openssl
     smartmontools
+    gpick
     # github cli & git
     gh
     git
@@ -204,6 +205,7 @@
     discord-ptb
     protontricks
     winetricks
+    whatsapp-for-linux
     wineWowPackages.stable # Ensures Wine dependencies are available
     gtk3 # Required for Protontricks GUI
     # nix config formatter
